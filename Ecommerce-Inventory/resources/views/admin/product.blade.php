@@ -20,6 +20,15 @@
         padding-bottom: 20px;
     }
 
+    label {
+        display: inline-block;
+        width: 200px;
+    }
+
+    .div_design{
+        padding-bottom: 15px;
+    }
+
     </style>
   </head>
   <body>
@@ -31,42 +40,59 @@
         <!-- partial -->
         <div class="main-panel">
           <div class="content-wrapper">
+
+            @if(session()->has('message'))
+
+            <div class="alert alert-success">
+                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">x</button>
+                {{session()->get('message')}}
+            </div>
+
+            @endif
+
              <div class="div_center">
                 <h1 class="font_size">Add Product</h1>
-                <div>
+                <form action="{{url('/add_product')}}" method="POST" enctype="multipart/form-data">
+
+                @csrf
+
+                <div class="div_design">
                     <label>Product Title :</label>
-                    <input class="text_color" type="text" name="title" placeholder="Write a tittle">
+                    <input class="text_color" type="text" name="title" placeholder="Write a tittle" required="">
                 </div>
-                <div>
+                <div class="div_design" >
                     <label>Product Description :</label>
-                    <input class="text_color" type="text" name="description" placeholder="Write a description">
+                    <input class="text_color" type="text" name="description" placeholder="Write a description" required="">
                 </div>
-                <div>
+                <div class="div_design">
                     <label>Product Price :</label>
-                    <input class="text_color" type="number" name="price" placeholder="Write a price">
+                    <input class="text_color" type="number" name="price" placeholder="Write a price" required="">
                 </div>
-              
-                <div>
+                <div class="div_design">
                     <label>Discount Price :</label>
                     <input class="text_color" type="number" name="dis_price" placeholder="Write a Discount apply">
                 </div>
-                <div>
+                <div class="div_design">
                     <label>Product Quantity :</label>
-                    <input class="text_color" type="number" min='0' name="quantity" placeholder="Write a quantity">
+                    <input class="text_color" type="number" min='0' name="quantity" placeholder="Write a quantity" required="">
                 </div>
-                <div>
+                <div class="div_design">
                     <label>Product Catagory :</label>
-                    <select class="text_color" name="catagory">
-                        <option>shirt</option>
+                    <select class="text_color" name="catagory" required="">
+                        <option value="" selected="">Add a catagory here</option>
+                        @foreach($catagory as $catagory)
+                        <option value="{{$catagory->catagory_name}}">{{$catagory->catagory_name}}</option>
+                        @endforeach
                     </select>
                 </div>
-                <div>
+                <div class="div_design">
                     <label>Product Image Here :</label>
-                    <input type="file" name="image">
+                    <input type="file" name="image" required="">
                 </div>
-                <div>
-                    <input type="submit">
+                <div class="div_design">
+                    <input type="submit" value="Add Product" class="btn btn-primary">
                 </div>
+                </form>
              </div>
           </div>
         </div>

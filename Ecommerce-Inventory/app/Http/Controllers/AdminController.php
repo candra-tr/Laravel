@@ -9,7 +9,8 @@ use App\Models\Catagory;
 class AdminController extends Controller
 {
     public function view_catagory(){
-        return view('admin.catagory');  
+        $data=catagory::all();
+        return view('admin.catagory',compact('data'));  
     }
     public function add_catagory(Request $request){
         $data=new catagory;
@@ -19,5 +20,13 @@ class AdminController extends Controller
         $data->save();
 
         return redirect()->back()->with('message','Catagory Added Succesfully');  
+    }
+
+    public function delete_catagory($id){
+        $data=catagory::find($id);
+
+        $data->delete();
+
+        return redirect()->back()->with('message','Catagory Deleted Succesfully');
     }
 }

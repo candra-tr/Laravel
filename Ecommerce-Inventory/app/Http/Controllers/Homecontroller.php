@@ -8,6 +8,11 @@ use App\Models\User;
 
 class HomeController extends Controller
 {
+    public function index() {
+        return view('home.userpage');
+    }
+
+
     public function redirect()
     {
         // Check if the user is authenticated

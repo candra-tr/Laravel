@@ -32,7 +32,13 @@ class HomeController extends Controller
             }
         }
 
+
         // If the user is not authenticated,  might want to redirect them to the login page
         return redirect()->route('login');
+    }
+
+    public function product_details($id){
+        $product=product::find($id);
+        return view('home.product_details',compact('product'));
     }
 }

@@ -52,8 +52,8 @@
             @endif
 
              <div class="div_center">
-                <h1 class="font_size">Add Product</h1>
-                <form action="{{url('/add_product')}}" method="POST" enctype="multipart/form-data">
+                <h1 class="font_size">Update Product</h1>
+                <form action="{{url('/update_product_confirm',$product->id)}}" method="POST" enctype="multipart/form-data">
 
                 @csrf
 
@@ -82,6 +82,10 @@
                     <select class="text_color" name="catagory" required="">
                         <option value="{{$product->catagory}}" selected="">{{$product->catagory}}</option>
                         
+                        @foreach($catagory as $catagory)
+                        <option value="{{$catagory->catagory_name}}">{{$catagory->catagory_name}}</option>
+                        @endforeach
+
                     </select>
                 </div>
                 <div class="div_design">
@@ -90,10 +94,10 @@
                 </div>
                 <div class="div_design">
                     <label>Change Product Image :</label>
-                    <input type="file" name="image" required="">
+                    <input type="file" name="image" >
                 </div>
                 <div class="div_design">
-                    <input type="submit" value="Add Product" class="btn btn-primary">
+                    <input type="submit" value="Update Product" class="btn btn-primary">
                 </div>
                 </form>
              </div>

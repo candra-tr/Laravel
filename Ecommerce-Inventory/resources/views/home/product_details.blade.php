@@ -28,24 +28,11 @@
          <!-- header section strats -->
         @include('home.header')
          <!-- end header section -->
-        </div>
 
-        {{$product->title}}
         
-        <div class="col-sm-6 col-md-4 col-lg-4">
-                  <div class="box">
-                     <div class="option_container">
-                        <div class="options">
-                           <a href="{{url('product_details',$product->id)}}" class="option1">
-                           Product Details
-                           </a>
-                           <a href="" class="option2">
-                           Buy Now
-                           </a>
-                        </div>
-                     </div>
-                     <div class="img-box">
-                        <img src="product/{{$product->image}}" alt="">
+        <div class="col-sm-6 col-md-4 col-lg-4" style="margin: auto; width: 50%; padding: 30px;">
+                     <div class="img-box" style="padding: 20px">
+                     <img src="product/{{$product->image}}" alt="">
                      </div>
                      <div class="detail-box">
                         <h5>
@@ -54,20 +41,29 @@
 
                         @if($product->discount_price!=null)
                         <h6 style="color: red;">
-                           Discount Price <br>
+                           Discount Price 
+                           <br>
                            ${{$product->discount_price}}                           
                         </h6>
 
                         <h6 style="text-decoration: line-through; color: blue;">
-                           Price <br>
+                           Price 
+                           <br>
                            ${{$product->price}}                           
-                        </h6>
+                        </h6> 
                         @else
                         <h6 style="color: blue;">
                            Price <br>
                            ${{$product->price}}                           
                         </h6>
                         @endif
+
+                        <h6>Product Category : {{$product->catagory}}</h6>
+                        <h6>Product Details : {{$product->description}}</h6>
+                        <h6>Available Quantity : {{$product->quantity}}</h6>
+                        <a href="" class="btn btn-primary">Add to Cart</a>
+
+            
 
                      </div>
                   </div>

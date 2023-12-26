@@ -61,7 +61,17 @@
                         <h6>Product Category : {{$product->catagory}}</h6>
                         <h6>Product Details : {{$product->description}}</h6>
                         <h6>Available Quantity : {{$product->quantity}}</h6>
-                        <a href="" class="btn btn-primary">Add to Cart</a>
+                        <form action="{{url('add_cart',$product->id)}}" method="Post">
+                              @csrf
+                              <div class="row">
+                                 <div class="col-md-4">
+                                    <input type="number" name="quantity" value="1" min="1" style="width: 100px">
+                                 </div>
+                                 <div class="col-md-4">
+                                    <input type="submit" value="Add To Chart">
+                                 </div>
+                              </div>
+                           </form>
 
             
 
